@@ -37,7 +37,7 @@ function updateClock() {
         3600000
     );
 
-    const h = String(utc1.getHours()).padStart(2, '0');
+    const h = String(utc1.getHours() + 1).padStart(2, '0');
     const m = String(utc1.getMinutes()).padStart(2, '0');
     const s = String(utc1.getSeconds()).padStart(2, '0');
 
