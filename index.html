@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>Ora UTC+1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 48px;
-            text-align: center;
-            margin-top: 100px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ora UTC+1</title>
+
+<style>
+    body {
+        margin: 0;
+        background: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    #clock {
+        font-size: 8vw;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
 
@@ -20,15 +31,18 @@
 function updateClock() {
     const now = new Date();
 
-    // UTC in millisecondi + 1 ora
-    const utc1 = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + 3600000);
+    const utc1 = new Date(
+        now.getTime() +
+        now.getTimezoneOffset() * 60000 +
+        3600000
+    );
 
-    const hours = String(utc1.getHours()).padStart(2, '0');
-    const minutes = String(utc1.getMinutes()).padStart(2, '0');
-    const seconds = String(utc1.getSeconds()).padStart(2, '0');
+    const h = String(utc1.getHours()).padStart(2, '0');
+    const m = String(utc1.getMinutes()).padStart(2, '0');
+    const s = String(utc1.getSeconds()).padStart(2, '0');
 
     document.getElementById('clock').textContent =
-        `${hours}:${minutes}:${seconds} UTC+1`;
+        `${h}:${m}:${s}`;
 }
 
 updateClock();
