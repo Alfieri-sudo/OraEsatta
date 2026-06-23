@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ora UTC+1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 48px;
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="clock"></div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+
+    // UTC in millisecondi + 1 ora
+    const utc1 = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + 3600000);
+
+    const hours = String(utc1.getHours()).padStart(2, '0');
+    const minutes = String(utc1.getMinutes()).padStart(2, '0');
+    const seconds = String(utc1.getSeconds()).padStart(2, '0');
+
+    document.getElementById('clock').textContent =
+        `${hours}:${minutes}:${seconds} UTC+1`;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
